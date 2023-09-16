@@ -1,0 +1,24 @@
+Instructions to use my code for my project "Evaluating the effectiveness of AI models to tune the evaluation function of a chess engine under limited training time".
+"Template" uses files from a branch of Stockfish to use as the board representation and search of the engines before the introduction of NNUE. This library can be found here: https://github.com/Fanael/Stockfish/tree/dried-cod.
+
+All chess engines used in my diss can be found within the folder "Engines used in Diss". To create your own, follow the instructions below.
+
+PREREQUISITES
+1. Download code folder named "Template".
+2. Training code requires SQLite3 C++ library for access to database.
+3. Training code gnuplot requires Boost iostreams C++ library for plotting data.
+4. UCI protocol: https://www.wbec-ridderkerk.nl/html/UCIProtocol.html
+5. My personal favourite UCI-compatible chess GUI: http://www.playwitharena.de/
+
+FOR TUNING EVALUATION FUNCTION
+1. Add 'main.cpp' and 'evaluation.cpp' to Template from folder "Evaluation function tuning code files" - the main.cpp file being from the chosen training method of choice.
+2. Compile all code within Template and Template/syzygy (including our database fen_depth2.db).
+Running the compiled program will give a graph of performance and the weight values of the best sample produced by the chosen algorithm.
+If you want to tune the hyper-parameters, follow the same steps but with the main.cpp files within "Hyper-parameter tuning code files".
+
+FOR CREATING CHESS ENGINE
+1. Add 'main.cpp' and 'evaluation.cpp' from folder "Engine code files".
+2. Replace weights under ///WEIGHTS in evaluation.cpp with weights generated from tuning evaluation function.
+3. Compile all code within Template and Template/syzgy.
+Running the compiled program will enter UCI protocol - i.e the chess engine. The executable file can be uploaded to any UCI-compatible chess GUI for use.
+
